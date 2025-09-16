@@ -1,5 +1,6 @@
 ﻿namespace ToDoListAPI.DTOs
 {
+    //Talvez não precise.
     public class SetTitleRequestDTO
     {
         public int ToDoListId { get; set; }

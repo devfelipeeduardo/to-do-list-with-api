@@ -1,6 +1,6 @@
 ﻿namespace ToDoListAPI.Interfaces.Models
 {
-    public interface ITaskTD
+    public interface ITaskToDo
     {
         int Id { get;}
         bool IsChecked { get; }
@@ -8,6 +8,6 @@
 
         void ToggleChecked();
 
-        void SetDescription(string description);
+        void SetTaskDescription(string description);
     }
 }

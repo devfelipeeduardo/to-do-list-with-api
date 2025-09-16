@@ -6,8 +6,9 @@ namespace ToDoListAPI.Interfaces.Models
     {
         int Id { get; }
         string Title { get; }
-        List<ITaskTD> Tasks { get; }
+        List<ITaskToDo> Tasks { get; }
         void SetTitle(string title);
+        void SetTaskDescription(int taskId,  string description);
 
     }
 }

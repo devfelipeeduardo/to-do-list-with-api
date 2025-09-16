@@ -1,11 +1,12 @@
 using ToDoListAPI.Data;
 using ToDoListAPI.Services;
 using Microsoft.EntityFrameworkCore;
+using ToDoListAPI.Interfaces.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //Services
-builder.Services.AddScoped<IToDoListService, ToDoListService>();
+builder.Services.AddScoped<IListsManagerService, ListsManagerService>();
 
 //Banco
 builder.Services.AddDbContext<AppDbContext>(options =>
