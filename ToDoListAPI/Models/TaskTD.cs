@@ -4,7 +4,7 @@ namespace ToDoListAPI.Models
 {
     public class TaskTD : ITaskTD
     {
-        public readonly int Id;
+        public int Id { get; private set; }
         public bool IsChecked { get; private set; }
         public string Description { get; private set; } = string.Empty;
         public TaskTD() { }

@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ToDoListAPI.Models;
+using ToDoListAPI.Data;
+using ToDoListAPI.DTOs;
+using Microsoft.AspNetCore.Http.Json;
+using ToDoListAPI.Services;
 
 namespace ToDoListAPI.Controllers
 {
@@ -7,22 +10,38 @@ namespace ToDoListAPI.Controllers
     [Route("/api")]
     public class ToDoListController : ControllerBase
     {
-        public ToDoListController() { }
+        private ToDoListService _toDoListService;
+        private readonly AppDbContext _context;
 
-        [Route("state")]
-        public IActionResult GetState ()
+        public ToDoListController(AppDbContext context, ToDoListService toDoListService) {
+            _context = context;
+            _toDoListService = toDoListService;
+        }
+
+        [HttpPost("set-todolist-title")]
+        public IActionResult SetTitle([FromBody] SetTitleRequestDTO request)
         {
+            try
+            {
+                _toDoListService.SetToDoListTitle(request.ToDoListId, request.Title);
+            }
+            catch (Exception ex) { 
+                Console.WriteLine(ex.Message);
+                return StatusCode(500, "Ocorreu um erro ao atualizar o título");
+            }
+
             return Ok();
         }
 
-        [Route("set-list-state")]
-        public IActionResult SetListState(ToDoList list ) {
-            return Ok();
-        }
+        //[Route("set-list-state")]
+        //public IActionResult SetListState(ToDoList list ) {
+        //    return Ok();
+        //}
 
-        public IActionResult Index()
-        {
-            return Ok();
-        }
+        //[Route("state")]
+        //public IActionResult GetState ()
+        //{
+        //    return Ok();
+        //}
     }
 }
