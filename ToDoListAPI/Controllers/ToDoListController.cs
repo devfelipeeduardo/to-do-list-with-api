@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ToDoListAPI.Data;
 using ToDoListAPI.DTOs;
-using Microsoft.AspNetCore.Http.Json;
-using ToDoListAPI.Services;
+using ToDoListAPI.Models;
 using ToDoListAPI.Interfaces.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace ToDoListAPI.Controllers
 {
@@ -19,6 +19,26 @@ namespace ToDoListAPI.Controllers
             _context = context;
             _listsManagerService = listsManagerService;
         }
+
+        [HttpPost("create-todolist")]
+        public async Task<IActionResult> CreateNewToDoList([FromBody] ToDoList request)
+        {
+            if (request == null) return StatusCode(500, "Ocorreu um erro ao atualizar o título");
+
+            request.Id = 0;
+
+            _context.ToDoLists.Add(request);
+            await _context.SaveChangesAsync();
+            return Ok(request);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var toDoLists = await _context.ToDoLists.ToListAsync();
+            return Ok(toDoLists);
+        }
+
 
 
         [HttpPost("set-todolist-title")]

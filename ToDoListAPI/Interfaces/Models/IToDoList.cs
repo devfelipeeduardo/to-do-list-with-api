@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Primitives;
+using ToDoListAPI.Models;
 
 namespace ToDoListAPI.Interfaces.Models
 {
@@ -6,7 +7,7 @@ namespace ToDoListAPI.Interfaces.Models
     {
         int Id { get; }
         string Title { get; }
-        List<ITaskToDo> Tasks { get; }
+        IReadOnlyList<TaskToDo> Tasks { get; }
         void SetTitle(string title);
         void SetTaskDescription(int taskId,  string description);
 

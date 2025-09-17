@@ -1,13 +1,17 @@
-﻿using ToDoListAPI.Interfaces.Models;
+﻿using System.Text.Json.Serialization;
+using ToDoListAPI.Interfaces.Models;
 
 namespace ToDoListAPI.Models
 {
     public class TaskToDo : ITaskToDo
     {
-        public int Id { get; private set; }
-        public bool IsChecked { get; private set; } = false;
-        public string Description { get; private set; } = string.Empty;
-        public TaskToDo() {}
+        public int Id { get; set; }
+        public bool IsChecked { get; set; } = false;
+        public string Description { get; set; } = string.Empty;
+        public int ToDoListId { get; set; }
+
+        [JsonIgnore]
+        public ToDoList? ToDoList { get; set; }
 
         public void ToggleChecked() { 
             IsChecked = !IsChecked;

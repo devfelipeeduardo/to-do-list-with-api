@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ToDoListAPI.Interfaces;
-
-using ToDoListAPI.Interfaces.Models;
+using ToDoListAPI.Models;
 
 namespace ToDoListAPI.Data
 {
@@ -9,6 +7,7 @@ namespace ToDoListAPI.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        public DbSet<IToDoList> ToDoLists { get; set; }
+        public DbSet<ToDoList> ToDoLists { get; set; }
+        public DbSet<TaskToDo> Tasks { get; set; }
     }
 }

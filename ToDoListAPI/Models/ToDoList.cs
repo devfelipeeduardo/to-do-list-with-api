@@ -4,9 +4,11 @@ namespace ToDoListAPI.Models
 {
     public class ToDoList : IToDoList
     {
-        public int Id {  get; private set; }
-        public string Title { get; private set; } = string.Empty;
-        public List<ITaskToDo> Tasks { get; private set; } = [];
+        public int Id {  get; set; }
+        public string Title { get; set; } = string.Empty;
+        public List<TaskToDo> Tasks { get; set; } = [];
+
+        IReadOnlyList<TaskToDo> IToDoList.Tasks => Tasks.AsReadOnly();
 
         public void SetTaskDescription(int taskId, string description)
         {
