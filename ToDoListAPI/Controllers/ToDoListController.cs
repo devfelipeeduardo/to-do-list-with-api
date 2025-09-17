@@ -40,7 +40,6 @@ namespace ToDoListAPI.Controllers
         }
 
 
-
         [HttpPost("set-todolist-title")]
         public IActionResult SetTitle([FromBody] SetTitleRequestDTO request)
         {
