@@ -6,9 +6,10 @@ namespace ToDoListAPI.Models
     public class TaskToDo : ITaskToDo
     {
         public int Id { get; set; }
+        public int ToDoListId { get; set; }
+        public int TaskNumber { get; set; }
         public bool IsChecked { get; set; } = false;
         public string Description { get; set; } = string.Empty;
-        public int ToDoListId { get; set; }
 
         [JsonIgnore]
         public ToDoList? ToDoList { get; set; }

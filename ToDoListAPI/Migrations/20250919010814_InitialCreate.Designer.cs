@@ -11,7 +11,7 @@ using ToDoListAPI.Data;
 namespace ToDoListAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250917013615_InitialCreate")]
+    [Migration("20250919010814_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -38,6 +38,9 @@ namespace ToDoListAPI.Migrations
 
                     b.Property<bool>("IsChecked")
                         .HasColumnType("bit");
+
+                    b.Property<int>("TaskNumber")
+                        .HasColumnType("int");
 
                     b.Property<int>("ToDoListId")
                         .HasColumnType("int");

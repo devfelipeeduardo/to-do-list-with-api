@@ -36,6 +36,9 @@ namespace ToDoListAPI.Migrations
                     b.Property<bool>("IsChecked")
                         .HasColumnType("bit");
 
+                    b.Property<int>("TaskNumber")
+                        .HasColumnType("int");
+
                     b.Property<int>("ToDoListId")
                         .HasColumnType("int");
 

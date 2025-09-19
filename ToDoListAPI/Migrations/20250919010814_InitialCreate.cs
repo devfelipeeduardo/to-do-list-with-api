@@ -29,9 +29,10 @@ namespace ToDoListAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    ToDoListId = table.Column<int>(type: "int", nullable: false),
+                    TaskNumber = table.Column<int>(type: "int", nullable: false),
                     IsChecked = table.Column<bool>(type: "bit", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ToDoListId = table.Column<int>(type: "int", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -1,9 +1,9 @@
-﻿namespace ToDoListAPI.DTOs
+﻿namespace ToDoListAPI.DTOs.TaskToDo
 {
     public class SetTaskDescriptionDTO
     {
+        public int TaskNumber { get; set; }
         public int ToDoListId { get; set; }
-        public int TaskId { get; set; }
         public string Description { get; set; } = string.Empty;
     }
 }

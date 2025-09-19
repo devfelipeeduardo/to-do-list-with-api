@@ -10,10 +10,10 @@ namespace ToDoListAPI.Models
 
         IReadOnlyList<TaskToDo> IToDoList.Tasks => Tasks.AsReadOnly();
 
-        public void SetTaskDescription(int taskId, string description)
+        public void SetTaskDescription(int taskNumber, string description)
         {
 
-            ITaskToDo task = Tasks.FirstOrDefault(t => t.Id == taskId);
+            ITaskToDo task = Tasks.FirstOrDefault(t => t.TaskNumber == taskNumber);
 
             if (task != null)
             {
