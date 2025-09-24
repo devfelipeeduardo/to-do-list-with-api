@@ -5,6 +5,8 @@ using ToDoListAPI.Interfaces.Services;
 using Microsoft.EntityFrameworkCore;
 using ToDoListAPI.DTOs.ToDoList;
 using ToDoListAPI.DTOs.TaskToDo;
+using Azure.Core;
+using ToDoListAPI.Interfaces.Models;
 
 namespace ToDoListAPI.Controllers
 {
@@ -12,16 +14,16 @@ namespace ToDoListAPI.Controllers
     [Route("/api")]
     public class ToDoListController : ControllerBase
     {
-        private IListsManagerService _listsManagerService;
         private readonly AppDbContext _context;
 
-        public ToDoListController(AppDbContext context, IListsManagerService listsManagerService)
+        public ToDoListController(AppDbContext context)
         {
             _context = context;
-            _listsManagerService = listsManagerService;
         }
 
-        [HttpPost("create-todolist")]
+        // TODO: depois que ajustar o programa, mover regras de negócio para as services
+
+        [HttpPost("create-todo-list")]
         public async Task<IActionResult> CreateNewToDoList([FromBody] CreateListDTO request)
         {
             if (request == null) return StatusCode(500, "Ocorreu um erro ao criar uma lista");
@@ -41,17 +43,70 @@ namespace ToDoListAPI.Controllers
             return Ok(request);
         }
 
+        [HttpPost("set-todo-list-title")]
+        public async Task<IActionResult> SetListTitle([FromBody] SetTitleListDTO request)
+        {
+            try
+            {
+                var toDoList = await _context.ToDoLists.FirstOrDefaultAsync(l => l.Id == request.Id);
+
+                if (toDoList == null)
+                {
+                    return NotFound("Lista não encontrada");
+                }
+
+                toDoList.Title = request.Title;
+
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return StatusCode(500, "Ocorreu um erro ao atualizar o título");
+            }
+        }
+        [HttpDelete("delete-todo-list/{id}")]
+        public async Task<IActionResult> DeleteToDoList(int id)
+        {
+            try
+            {
+                var toDoList = await _context.ToDoLists.FirstOrDefaultAsync(l => l.Id == id);
+
+                if (toDoList == null)
+                {
+                    return NotFound("Lista não encontrada");
+                }
+
+                _context.ToDoLists.Remove(toDoList);
+
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return StatusCode(500, "Ocorreu um erro ao deletar a lista");
+            }
+        }
+
+        [HttpGet("get-all-todo-lists")]
+        public async Task<IActionResult> GetAllToDoLists()
+        {
+            var toDoLists = await _context.ToDoLists.ToListAsync();
+            if (toDoLists == null) return NotFound("Ocorreu um erro ao retornar as listas");
+
+            return Ok(toDoLists);
+        }
+
         [HttpPost("add-new-task")]
         public async Task<IActionResult> AddNewTask([FromBody] AddNewTaskDTO request)
         {
             if (request == null) return StatusCode(500, "Ocorreu um erro ao adicionar uma tarefa");
-
-            // TODO: mover regra de incremento de TaskNumber para o TaskService.
             var lastTaskNumber = await _context.Tasks
                 .Where(t => t.ToDoListId == request.ToDoListId)
                 .Select(t => (int?)t.TaskNumber)
                 .MaxAsync() ?? 0;
-
 
             var taskToDo = new TaskToDo
             {
@@ -67,50 +122,38 @@ namespace ToDoListAPI.Controllers
             return Ok(request);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
-            var toDoLists = await _context.ToDoLists.ToListAsync();
-
-            if (toDoLists == null) return NotFound("Ocorreu um erro ao retornar as listas");
-
-            return Ok(toDoLists);
-        }
-
-
-        [HttpPost("set-todolist-title")]
-        public async Task<IActionResult> SetListTitle([FromBody] SetTitleListDTO request)
+        [HttpDelete("delete-task/{toDoListid}")]
+        public async Task<IActionResult> DeleteTask(int toDoListId)
         {
             try
             {
-                var toDoList = _context.ToDoLists.FirstOrDefault(l => l.Id == request.Id);
+                var task = await _context.Tasks.FirstOrDefaultAsync(t => t.ToDoListId == request.ToDoListId && t.TaskNumber == request.TaskNumber);
 
-                if (toDoList == null)
-                {
-                    return NotFound("Ocorreu um erro ao atualizar o título, a lista não foi encontrada");
-                }
-                toDoList.Title = request.Title;
+                if (task == null) return NotFound("Ocorreu um erro ao deletar a tarefa, a tarefa não foi encontrada");
+
+                _context.Tasks.Remove(task);
 
                 await _context.SaveChangesAsync();
 
+                return Ok();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return StatusCode(500, "Ocorreu um erro ao atualizar o título");
-            }
-
-            return Ok();
+                return StatusCode(500, "Ocorreu um erro ao excluir a tarefa.");
+            };
         }
 
-        [HttpPost("set-task-description")]
+        [HttpPost("update-task-description")]
         public async Task<IActionResult> SetTaskDescription([FromBody] SetTaskDescriptionDTO request)
         {
             try
             {
-                var task = _context.Tasks.FirstOrDefault(t => t.ToDoListId == request.ToDoListId && t.TaskNumber == request.TaskNumber);
+                var task = await _context.Tasks.FirstOrDefaultAsync(t => t.ToDoListId == request.ToDoListId && t.TaskNumber == request.TaskNumber);
 
                 if (task == null) return NotFound("Ocorreu um erro ao atualizar a descrição, a tarefa não foi encontrada");
+
+                task.Description = request.Description;
 
                 await _context.SaveChangesAsync();
 
@@ -122,6 +165,5 @@ namespace ToDoListAPI.Controllers
                 return StatusCode(500, "Ocorreu um erro ao atualizar a descrição.");
             }
         }
-
     }
 }
