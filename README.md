@@ -1,0 +1,58 @@
+
+# ToDoList
+
+Uma lista de tarefas, desenvolvida utilizando .NET WebAPI, EF, JWT no Backend e React no Frontend
+
+
+## Stack utilizada
+
+**Front-end:** React, CSS
+
+**Back-end:** C#/.NET, JWT, EntityFramework
+
+
+## Funcionalidades
+
+- Temas dark e light
+- Criação de listas de tarefas
+- Responsividade Desktop e Mobile
+
+
+## Instalação
+
+Instale my-project com npm
+
+```bash
+  npm install my-project
+  cd my-project
+```
+
+Run
+
+```bash
+npm run dev
+```
+    
+## Contribuindo
+
+Contribuições são sempre bem-vindas!
+
+Veja `contribuindo.md` para saber como começar.
+
+Por favor, siga o `código de conduta` desse projeto.
+
+
+## Licença
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+## Contact
+
+```bash
+linkedin.com/in/felipefreitasof/
+```
+## Autores
+
+- [@octokatherine](https://www.github.com/devfelipeeduardo)
+
