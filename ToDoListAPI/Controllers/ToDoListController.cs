@@ -99,6 +99,20 @@ namespace ToDoListAPI.Controllers
             return Ok(toDoLists);
         }
 
+        [HttpGet("get-task-by-todo-list-id/{toDoListId}")]
+        public async Task <IActionResult> GetTasksByListId(int toDoListId)
+        {
+
+            var toDoList = await _context.ToDoLists.Include(l => l.Tasks).FirstOrDefaultAsync(l => l.Id == toDoListId);
+
+            if (toDoList == null) return NotFound();
+
+            var tasks = toDoList.Tasks;
+
+            return Ok(tasks);
+        }
+
+
         [HttpPost("add-new-task")]
         public async Task<IActionResult> AddNewTask([FromBody] AddNewTaskDTO request)
         {
@@ -122,8 +136,8 @@ namespace ToDoListAPI.Controllers
             return Ok(request);
         }
 
-        [HttpDelete("delete-task/{toDoListid}")]
-        public async Task<IActionResult> DeleteTask(int toDoListId)
+        [HttpDelete("delete-task")]
+        public async Task<IActionResult> DeleteTask([FromBody] DeleteTaskDTO request)
         {
             try
             {
