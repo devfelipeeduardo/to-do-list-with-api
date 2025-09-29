@@ -87,25 +87,46 @@ nav > .search-container > .search-button {
     box-shadow: 4px 5px 15px 1px rgba(0, 0, 0, 0.32);
 }
 
-.list > div {
+
+.list > .list-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 15%;
+    border-radius: 10px 0px;
+    background-color: rgb(207, 185, 61);
+    font-size: 1.8rem;
+}
+
+.list > .tasks-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     border-radius: 10px;
-}
-
-.list > .list-title {
-    width: 100%;
-    height: 15%;
-    border-radius: 10px 0px;
-    background-color: rgb(207, 185, 61);
-}
-
-.list > .tasks-container {
     height: 85%;
     border-radius: 10px 0px;
     background-color: rgb(255, 248, 210);
+}
+
+.button-and-tasktext {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 5px 0px 5px 0px;
+}
+
+.button-and-tasktext > .add-task-button {
+    width: 10%;
+    border-radius: 10px 0px;
+}
+
+.button-and-tasktext > .input-new-task {
+    width: 85%;
+    padding-left: 5px;
+    border-radius: 10px 0px;
 }
 
 .tasks-container > .task {

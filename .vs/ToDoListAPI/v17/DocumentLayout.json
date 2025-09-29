@@ -54,8 +54,7 @@
               "RelativeToolTip": "ToDoListAPI\\DTOs\\TaskToDo\\SetTaskDescriptionDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-24T21:57:38.53Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-24T21:57:38.53Z"
             },
             {
               "$type": "Document",
@@ -67,8 +66,7 @@
               "RelativeToolTip": "ToDoListAPI\\DTOs\\TaskToDo\\DeleteTaskDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-24T21:50:02.135Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-24T21:50:02.135Z"
             },
             {
               "$type": "Document",
@@ -80,8 +78,7 @@
               "RelativeToolTip": "ToDoListAPI\\DTOs\\TaskToDo\\AddNewTaskDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-24T21:49:45.299Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-24T21:49:45.299Z"
             },
             {
               "$type": "Document",
@@ -93,8 +90,7 @@
               "RelativeToolTip": "ToDoListAPI\\DTOs\\ToDoList\\SetTitleListDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-24T21:49:40.973Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-24T21:49:40.973Z"
             },
             {
               "$type": "Document",
@@ -106,8 +102,7 @@
               "RelativeToolTip": "ToDoListAPI\\DTOs\\ToDoList\\CreateListDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-24T21:49:38.299Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-24T21:49:38.299Z"
             },
             {
               "$type": "Document",
