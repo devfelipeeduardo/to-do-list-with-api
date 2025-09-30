@@ -1,3 +1,5 @@
+import Task from './Task';
+
 import './style.css';
 
 function List({ title }) {
@@ -5,21 +7,21 @@ function List({ title }) {
     return (
         <div className="list">
             <div className="list-title">{title}</div>
-            <div className="button-and-tasktext">
+            <div className="add-task-container">
                 <button className="add-task-button">+</button>
-                <input className="input-new-task" type="text" placeholder="tarefa"></input>
+                <input className="add-task-input-text" type="text" placeholder="Insira sua tarefa"></input>
             </div>
             <div className="tasks-container">
-                <input className="task" type="text" placeholder="1" />
-                <input className="task" type="text" placeholder="2" />
-                <input className="task" type="text" placeholder="3" />
-                <input className="task" type="text" placeholder="4" />
-                <input className="task" type="text" placeholder="5" />
-                <input className="task" type="text" placeholder="6" />
-                <input className="task" type="text" placeholder="7" />
-                <input className="task" type="text" placeholder="8" />
-                <input className="task" type="text" placeholder="9" />
-                <input className="task" type="text" placeholder="10" />
+                <Task placeholder="1" />
+                <Task placeholder="2" />
+                <Task placeholder="3" />
+                <Task placeholder="4" />
+                <Task placeholder="5" />
+                <Task placeholder="6" />
+                <Task placeholder="7" />
+                <Task placeholder="8" />
+                <Task placeholder="9" />
+                <Task placeholder="10" />
             </div>
         </div>
     );
