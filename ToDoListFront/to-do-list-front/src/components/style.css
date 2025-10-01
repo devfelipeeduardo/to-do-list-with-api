@@ -82,7 +82,7 @@ nav>.search-container {
     width: 85%;
     height: 35%;
     border-radius: 5px;
-    border: 1px solid transparent;
+    border: 2px solid rgba(64, 42, 5, 0.425);
 }
 
 .search-container>.search-input:focus {
@@ -99,16 +99,9 @@ nav>.search-container {
     font-weight: 600;
     cursor: pointer;
     background: rgb(255, 255, 255);
-    color: white;
+    color: rgb(0, 0, 0);
     transition: transform 300ms ease;
-    text-shadow:
-        -1px -1px 0 rgb(87, 87, 87),
-        1px -1px 0 rgb(87, 87, 87),
-        -1px 1px 0 rgb(87, 87, 87),
-        1px 1px 0 rgb(87, 87, 87),
-        -2px -2px 0 rgb(87, 87, 87),
-        2px -2px 0 rgb(87, 87, 87),
-        -2px 2px 0 rgb(87, 87, 87);
+    border: 2px solid rgba(64, 42, 5, 0.425);
 }
 
 .search-button:hover {
@@ -122,7 +115,6 @@ nav>.search-container {
     flex-direction: column;
     width: 80%;
     height: 90%;
-    /* background-color: aquamarine; */
     border-radius: 10px;
     box-shadow: 4px 5px 15px 1px rgba(0, 0, 0, 0.32);
 }
@@ -133,7 +125,7 @@ nav>.search-container {
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 15%;
+    min-height: 15%;
     border-radius: 10px 0px;
     background-color: rgb(200, 152, 30);
     font-size: 1.8rem;
@@ -151,12 +143,11 @@ nav>.search-container {
 }
 
 .list>.tasks-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border-radius: 10px;
+    display: grid;
+    grid-template-rows: repeat(10, 1fr);
+    gap: 5px;
     height: 85%;
+    border-radius: 10px;
     border-radius: 10px 0px;
 }
 
@@ -209,15 +200,14 @@ nav>.search-container {
 /**/
 .list .task-row-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     position: relative;
-    height: 90%;
     width: 100%;
 }
 
 .task-row-container>.task-input {
-    box-sizing: border-box;
-    width: 85%;
+    flex: 1;
+    height: 100%;
     margin: 1px 1px 1px 1px;
     padding: 0px 0px 0px 5px;
     border-radius: 5px;
@@ -239,15 +229,17 @@ nav>.search-container {
 .task-row-container>.delete-task-button {
     position: relative;
     width: 10%;
+    height: 10%;
     border-radius: 30px;
     border: none;
     border: 1px solid rgb(234, 234, 234);
     background-color: transparent;
-    transition: all 800ms ease-in-out;
+    transition: all 350ms ease-in-out;
 }
 
 .task-row-container>.delete-task-button:hover {
     cursor: pointer;
-    transform: scale(1);
+    transform: scale(0.9);
     border: 1px solid rgb(255, 195, 195);
+    color: rgb(255, 0, 0);
 }
