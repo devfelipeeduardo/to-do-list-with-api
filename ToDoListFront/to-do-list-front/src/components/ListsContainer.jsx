@@ -1,4 +1,4 @@
-import TasksGrid from "./TasksGrid";
+import ListsGrid from "./ListsGrid";
 import Nav from "./Nav"
 import './style.css';
 
@@ -7,7 +7,7 @@ function ListsContainer() {
     return (
         <div className="lists-container">
             <Nav />
-            <TasksGrid />
+            <ListsGrid />
         </div>
     );
 }
