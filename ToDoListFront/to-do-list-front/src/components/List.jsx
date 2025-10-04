@@ -3,13 +3,13 @@ import Task from './Task';
 
 import './style.css';
 
-function List({ title }) {
+function List({ title, deleteList }) {
 
     const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState("");
     const inputRef = useRef(null);
 
-    function handleAddTask() {
+    function addTask() {
         if (tasks.length == 9) {
             alert("Só é possível adicionar até 09 tarefas!")
             return;
@@ -26,8 +26,8 @@ function List({ title }) {
         setNewTask("");
     }
 
-    function handleDeleteTask(idToDelete) {
-        setTasks(tasks.filter((_, index) => index !== idToDelete));
+    function deleteTask(idToDelete) {
+        setTasks(tasks.filter(task => task.id !== idToDelete));
     }
 
     const focusOnInput = () => {
@@ -39,11 +39,20 @@ function List({ title }) {
 
     return (
         <div className="list">
-            <div className="list-title">{title}</div>
+            <div className="list-title">
+                {title}
+                <button
+                    className="delete-list-button"
+                    onClick={deleteList}
+                >
+                    x
+                </button>
+            </div>
+
             <div className="add-task-container">
                 <button
                     className="add-task-button"
-                    onClick={() => { handleAddTask(); focusOnInput(); }}
+                    onClick={() => { addTask(); focusOnInput(); }}
                 >+</button>
 
                 <input
@@ -55,19 +64,19 @@ function List({ title }) {
                     onChange={(e) => setNewTask(e.target.value)}
                     onKeyDown={(e) => {
                         if (e.key === "Enter") {
-                            handleAddTask();
+                            addTask();
                         }
                     }}
-                    >
+                >
                 </input>
 
             </div>
             <div className="tasks-container">
-                {tasks.map((task, index) => (
+                {tasks.map((task) => (
                     <Task
                         key={task.id}
                         placeholder={task.text}
-                        handleDeleteTask={() => handleDeleteTask(index)}
+                        deleteTask={() => deleteTask(task.id)}
                     />
                 ))}
             </div>

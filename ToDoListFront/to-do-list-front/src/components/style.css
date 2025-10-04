@@ -119,11 +119,25 @@ nav>.search-container {
     box-shadow: 4px 5px 15px 1px rgba(0, 0, 0, 0.32);
 }
 
+.tasks-grid .add-list-button {
+    height: 80px;
+    width: 80px;
+    border-radius: 50px;
+    background-color: white;
+    font-size: 50px;
+    transition: transform 300ms ease-in-out;
+}
+
+.tasks-grid .add-list-button:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
 .list>.list-title {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     min-height: 15%;
     border-radius: 10px 0px;
@@ -140,6 +154,23 @@ nav>.search-container {
         -2px -2px 0 rgb(87, 87, 87),
         2px -2px 0 rgb(87, 87, 87),
         -2px 2px 0 rgb(87, 87, 87);
+}
+
+.list>.list-title .delete-list-button {
+    position: relative;
+    width: 10%;
+    height: 50%;
+    border-radius: 30px;
+    border: none;
+    border: 1px solid rgb(234, 234, 234);
+    background-color: transparent;
+    transition: transform 300ms ease-in;
+    cursor: pointer;
+}
+
+.list>.list-title .delete-list-button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
 }
 
 .list>.tasks-container {

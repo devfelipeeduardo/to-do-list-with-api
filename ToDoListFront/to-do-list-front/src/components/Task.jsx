@@ -1,4 +1,4 @@
-function Task({ placeholder, handleDeleteTask}) {
+function Task({ placeholder, deleteTask}) {
 
     return (
         <>
@@ -6,7 +6,7 @@ function Task({ placeholder, handleDeleteTask}) {
                 <input className="task-input" type="text" placeholder={placeholder} />
                 <button
                 className="delete-task-button"
-                onClick={handleDeleteTask}
+                onClick={deleteTask}
                 >x</button>
             </div>
         </>
