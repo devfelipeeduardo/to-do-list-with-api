@@ -3,7 +3,7 @@ import Task from './Task';
 
 import './style.css';
 
-function List({ title, deleteList }) {
+function List({ id, title, deleteList, updateListTitle}) {
 
     const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState("");
@@ -39,8 +39,14 @@ function List({ title, deleteList }) {
 
     return (
         <div className="list">
-            <div className="list-title">
-                {title}
+            <div className="list-title-container">
+
+                <input
+                type="text"
+                className="list-title"
+                value={title}
+                onChange={(e) => updateListTitle(id, e.target.value)}
+                />
                 <button
                     className="delete-list-button"
                     onClick={deleteList}

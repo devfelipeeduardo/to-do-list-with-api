@@ -133,19 +133,26 @@ nav>.search-container {
     cursor: pointer;
 }
 
-.list>.list-title {
+.list>.list-title-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row;
     width: 100%;
     min-height: 15%;
     border-radius: 10px 0px;
     background-color: rgb(200, 152, 30);
-    font-size: 1.8rem;
+}
+
+.list>.list-title-container .list-title {
+    font-size: 1.4rem;
     font-weight: 600;
+    padding-left: 15px;
+    width: 80%;
+    background-color: transparent;
     color: white;
     user-select: none;
+    border: none;
     text-shadow:
         -1px -1px 0 rgb(87, 87, 87),
         1px -1px 0 rgb(87, 87, 87),
@@ -156,19 +163,23 @@ nav>.search-container {
         -2px 2px 0 rgb(87, 87, 87);
 }
 
-.list>.list-title .delete-list-button {
+.list>.list-title-container .list-title:focus {
+    outline: none;
+    caret-color: black;
+}
+
+.list>.list-title-container .delete-list-button {
     position: relative;
-    width: 10%;
-    height: 50%;
-    border-radius: 30px;
-    border: none;
+    width: 7.5%;
+    border-radius: 10px;
     border: 1px solid rgb(234, 234, 234);
+    margin-right: 5px;
     background-color: transparent;
     transition: transform 300ms ease-in;
     cursor: pointer;
 }
 
-.list>.list-title .delete-list-button:hover {
+.list>.list-title-container .delete-list-button:hover {
     cursor: pointer;
     transform: scale(1.05);
 }

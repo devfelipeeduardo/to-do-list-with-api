@@ -16,7 +16,7 @@ function ListsGrid() {
 
         const listObject = {
             id: Date.now(),
-            title: "Insira"
+            title: "Título"
 
         }
 
@@ -26,6 +26,15 @@ function ListsGrid() {
     function deleteList(idToDelete) {
         setLists(lists.filter(list => list.id !== idToDelete));
     }
+
+    function updateListTitle(id, newTitle) {
+        setLists(prevLists =>
+            prevLists.map(list =>
+                list.id === id ? { ...list, title: newTitle} : list
+            )
+        );
+    }
+
     useEffect(() => {
         if (!buttonRef.current) return;
 
@@ -41,7 +50,9 @@ function ListsGrid() {
             {lists.map(list => (
                 <List
                     key={list.id}
+                    id={list.id}
                     title={list.title}
+                    updateListTitle={updateListTitle}
                     deleteList={() => deleteList(list.id)}
                 />
             ))}
