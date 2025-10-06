@@ -1,11 +1,11 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, 
+        //  useState,
+         useRef } from 'react';
 import List from './List';
 import './style.css';
 
-function ListsGrid() {
-
-    const [lists, setLists] = useState([]);
-
+function ListsGrid({lists, setLists}) {
+    
     const buttonRef = useRef(null);
 
     function addList() {
