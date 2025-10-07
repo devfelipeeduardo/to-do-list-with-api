@@ -3,7 +3,15 @@ function Task({ placeholder, deleteTask}) {
     return (
         <>
             <div className="task-row-container">
-                <input className="task-input" type="text" placeholder={placeholder} />
+                <input
+                type="checkbox"
+                className="checkbox-task"/>
+
+                <input
+                className="task-input"
+                type="text"
+                placeholder={placeholder} />
+
                 <button
                 className="delete-task-button"
                 onClick={deleteTask}

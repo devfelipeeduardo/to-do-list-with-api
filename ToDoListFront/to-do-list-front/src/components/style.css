@@ -247,6 +247,18 @@ nav>.search-container {
     width: 100%;
 }
 
+/* I.A. que fez, se vira pra descobrir como fez*/
+.task-row-container .checkbox-task{
+    margin-left: 2.5px;
+    width: 15px;
+    border-radius: 10px;
+    align-self: center;
+}
+
+.task-row-container .checkbox-task:hover {
+    cursor: pointer;
+}
+
 .task-row-container>.task-input {
     flex: 1;
     height: 100%;
@@ -270,8 +282,8 @@ nav>.search-container {
 
 .task-row-container>.delete-task-button {
     position: relative;
-    width: 10%;
-    height: 10%;
+    width: 15px;
+    height: 15px;
     border-radius: 30px;
     border: none;
     border: 1px solid rgb(234, 234, 234);

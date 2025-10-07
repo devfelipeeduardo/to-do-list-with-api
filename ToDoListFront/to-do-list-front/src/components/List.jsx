@@ -40,7 +40,6 @@ function List({ id, title, deleteList, updateListTitle}) {
     return (
         <div className="list">
             <div className="list-title-container">
-
                 <input
                 type="text"
                 className="list-title"
