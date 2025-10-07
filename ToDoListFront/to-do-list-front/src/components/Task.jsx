@@ -1,11 +1,14 @@
+import Checkbox from "../minimal-components/CheckBox";
+
 function Task({ placeholder, deleteTask}) {
 
     return (
         <>
             <div className="task-row-container">
-                <input
+                {/* <input
                 type="checkbox"
-                className="checkbox-task"/>
+                className="checkbox-task"/> */}
+                <Checkbox />
 
                 <input
                 className="task-input"

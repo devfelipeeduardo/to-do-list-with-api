@@ -21,6 +21,15 @@ namespace ToDoListAPI.Controllers
             _context = context;
         }
 
+        [HttpGet("get-all-todo-lists")]
+        public async Task<IActionResult> GetAllToDoLists()
+        {
+            var toDoLists = await _context.ToDoLists.ToListAsync();
+            if (toDoLists == null) return NotFound("Ocorreu um erro ao retornar as listas");
+
+            return Ok(toDoLists);
+        }
+
         // TODO: depois que ajustar o programa, mover regras de negócio para as services
 
         [HttpPost("create-todo-list")]
@@ -90,16 +99,7 @@ namespace ToDoListAPI.Controllers
             }
         }
 
-        [HttpGet("get-all-todo-lists")]
-        public async Task<IActionResult> GetAllToDoLists()
-        {
-            var toDoLists = await _context.ToDoLists.ToListAsync();
-            if (toDoLists == null) return NotFound("Ocorreu um erro ao retornar as listas");
-
-            return Ok(toDoLists);
-        }
-
-        [HttpGet("get-task-by-todo-list-id/{toDoListId}")]
+        [HttpGet("get-tasks-by-todo-list-id/{toDoListId}")]
         public async Task <IActionResult> GetTasksByListId(int toDoListId)
         {
 
