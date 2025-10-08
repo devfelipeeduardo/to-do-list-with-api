@@ -14,6 +14,19 @@ builder.Services.AddScoped<IListsManagerService, ListsManagerService>();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+//Cors
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:5174")
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
+
 
 //Controllers
 builder.Services.AddControllers();
@@ -30,8 +43,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+app.UseCors();
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

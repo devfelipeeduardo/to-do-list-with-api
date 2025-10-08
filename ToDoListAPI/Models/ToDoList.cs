@@ -1,11 +1,15 @@
-﻿using ToDoListAPI.Interfaces.Models;
+﻿using System.Text.Json.Serialization;
+using ToDoListAPI.Interfaces.Models;
 
 namespace ToDoListAPI.Models
 {
     public class ToDoList : IToDoList
     {
+        [JsonPropertyName("id")]
         public int Id {  get; set; }
+        [JsonPropertyName("title")]
         public string Title { get; set; } = string.Empty;
+        [JsonPropertyName("tasks")]
         public List<TaskToDo> Tasks { get; set; } = [];
 
         IReadOnlyList<TaskToDo> IToDoList.Tasks => Tasks.AsReadOnly();
