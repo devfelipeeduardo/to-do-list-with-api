@@ -1,14 +1,20 @@
 
 # ToDoList
 
-Uma lista de tarefas, desenvolvida utilizando .NET WebAPI, EF, JWT no Backend e React no Frontend
-
+Uma lista de tarefas, desenvolvida para estudo.
 
 ## Stack utilizada
 
-**Front-end:** React, CSS
+**Front-end:**
 
-**Back-end:** C#/.NET, JWT, EntityFramework
+React ✅
+Redux ⏳
+
+**Back-end:**
+
+C#/.NET ✅
+EntityFramework ✅
+JWT ⏳
 
 
 ## Funcionalidades
